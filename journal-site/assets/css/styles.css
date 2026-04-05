@@ -1,0 +1,883 @@
+:root {
+  --bg: #eef1ec;
+  --paper: rgba(252, 248, 241, 0.88);
+  --paper-strong: #fcf7f1;
+  --paper-soft: rgba(248, 245, 238, 0.74);
+  --ink: #18232b;
+  --ink-soft: #53625f;
+  --line: rgba(41, 67, 60, 0.12);
+  --jade: #2b7d6b;
+  --jade-soft: #78a89c;
+  --moss: #6f7c65;
+  --seal: #8d4036;
+  --gold: #b79763;
+  --night: #17272b;
+  --shadow: 0 28px 80px rgba(20, 33, 32, 0.12);
+  --shadow-soft: 0 14px 40px rgba(20, 33, 32, 0.08);
+  --max-width: 1220px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(120, 168, 156, 0.15), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(183, 151, 99, 0.12), transparent 28%),
+    linear-gradient(180deg, #f7f2eb 0%, #edf1ec 100%);
+  font-family: "FangSong", "STFangsong", "Noto Serif SC", "Source Han Serif SC", serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px,
+      transparent 22px
+    ),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.22), transparent 30%);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.shell {
+  position: relative;
+}
+
+.topbar {
+  position: relative;
+  z-index: 3;
+  width: min(calc(100% - 2rem), var(--max-width));
+  margin: 0 auto;
+  padding-top: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-home .topbar,
+.page-entry .topbar {
+  color: rgba(248, 243, 236, 0.92);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand__mark {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 240, 230, 0.22);
+  background: rgba(255, 250, 242, 0.08);
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 1.15rem;
+}
+
+.brand__text {
+  font-family: "STKaiti", "KaiTi", serif;
+  letter-spacing: 0.2rem;
+  font-size: 1rem;
+}
+
+.topbar__links {
+  display: flex;
+  gap: 1.2rem;
+  font-size: 0.94rem;
+}
+
+.topbar__links a {
+  opacity: 0.85;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.topbar__links a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.home-hero,
+.entry-hero {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+}
+
+.home-hero {
+  min-height: 100vh;
+}
+
+.entry-hero {
+  min-height: 82vh;
+}
+
+.home-hero__media,
+.home-hero__wash,
+.entry-hero__media,
+.entry-hero__wash {
+  position: absolute;
+  inset: 0;
+}
+
+.home-hero__media img,
+.entry-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.82) brightness(0.78);
+}
+
+.home-hero__media img {
+  object-position: 50% 36%;
+  transform: scale(1.03);
+}
+
+.entry-hero__media img {
+  object-position: 50% 40%;
+}
+
+.home-hero__wash {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(71, 153, 132, 0.22), transparent 24%),
+    linear-gradient(120deg, rgba(12, 23, 25, 0.84) 0%, rgba(16, 28, 31, 0.56) 46%, rgba(14, 25, 30, 0.82) 100%);
+}
+
+.entry-hero__wash {
+  background:
+    linear-gradient(180deg, rgba(11, 20, 23, 0.2) 0%, rgba(11, 20, 23, 0.56) 100%),
+    linear-gradient(120deg, rgba(12, 23, 25, 0.8) 0%, rgba(16, 28, 31, 0.5) 48%, rgba(14, 25, 30, 0.78) 100%);
+}
+
+.home-hero__content,
+.entry-hero__content {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100% - 2rem), var(--max-width));
+  margin: 0 auto;
+  color: #f8f4ee;
+}
+
+.home-hero__content {
+  padding: clamp(6.5rem, 12vw, 10rem) 0 7rem;
+}
+
+.entry-hero__content {
+  padding: clamp(6rem, 10vw, 8.5rem) 0 4.5rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  letter-spacing: 0.16rem;
+  font-size: 0.78rem;
+  color: rgba(230, 242, 237, 0.86);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 3.2rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.eyebrow--dark {
+  color: rgba(43, 82, 74, 0.78);
+}
+
+.home-hero h1,
+.entry-hero h1,
+.section-header h2,
+.entry-summary h2,
+.tail-card h2 {
+  font-family: "STKaiti", "KaiTi", "Noto Serif SC", serif;
+  letter-spacing: 0.06rem;
+}
+
+.home-hero h1 {
+  margin: 1.4rem 0 1rem;
+  font-size: clamp(3.2rem, 6vw, 6rem);
+  line-height: 1;
+}
+
+.entry-hero h1 {
+  margin: 1.1rem 0 0.8rem;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1;
+}
+
+.home-hero__lead,
+.entry-hero__lead {
+  max-width: 42rem;
+  margin: 0;
+  line-height: 1.95;
+  color: rgba(241, 241, 236, 0.88);
+}
+
+.home-hero__lead {
+  font-size: clamp(1.04rem, 1.9vw, 1.24rem);
+}
+
+.entry-hero__lead {
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
+}
+
+.hero-pills,
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.hero-pills {
+  margin-top: 1.7rem;
+}
+
+.hero-pills span {
+  padding: 0.58rem 0.9rem;
+  border: 1px solid rgba(243, 237, 229, 0.18);
+  border-radius: 999px;
+  background: rgba(248, 244, 235, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.hero-actions {
+  margin-top: 1.6rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 8.5rem;
+  padding: 0.9rem 1.35rem;
+  border-radius: 999px;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button--solid {
+  color: #f8f4ee;
+  background: rgba(47, 125, 107, 0.9);
+  box-shadow: var(--shadow-soft);
+}
+
+.button--solid:hover {
+  background: rgba(61, 144, 124, 0.96);
+}
+
+.button--ghost {
+  color: #f8f4ee;
+  border: 1px solid rgba(245, 240, 233, 0.2);
+  background: rgba(248, 244, 235, 0.08);
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 1.8rem;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+
+.card--glass {
+  background: rgba(249, 245, 237, 0.09);
+  border-color: rgba(245, 240, 232, 0.16);
+  backdrop-filter: blur(12px);
+  color: #f7f2eb;
+}
+
+.card--ink {
+  background:
+    radial-gradient(circle at top right, rgba(79, 156, 136, 0.16), transparent 34%),
+    #17282b;
+  color: #f3eee7;
+}
+
+.card__meta {
+  margin: 0 0 0.9rem;
+  color: var(--jade);
+  letter-spacing: 0.12rem;
+  font-size: 0.82rem;
+}
+
+.card--ink .card__meta {
+  color: rgba(192, 226, 216, 0.88);
+}
+
+.home-hero__aside,
+.entry-hero__aside {
+  position: absolute;
+  z-index: 2;
+  right: min(6vw, 4rem);
+  bottom: 4rem;
+  width: min(23rem, calc(100% - 2rem));
+  padding: 1.45rem 1.4rem 1.3rem;
+}
+
+.entry-hero__aside {
+  bottom: 3.4rem;
+}
+
+.home-hero__aside-title {
+  margin: 0 0 0.8rem;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 1.35rem;
+}
+
+.home-hero__aside-body,
+.entry-hero__aside p {
+  margin: 0;
+  line-height: 1.9;
+  color: rgba(244, 240, 232, 0.9);
+}
+
+.home-hero__aside-poem {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(242, 235, 227, 0.14);
+}
+
+.home-hero__aside-poem p {
+  margin: 0;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 1.12rem;
+}
+
+.home-hero__aside-poem span {
+  display: block;
+  margin-top: 0.45rem;
+  color: rgba(225, 235, 230, 0.74);
+  font-size: 0.92rem;
+}
+
+.entry-breadcrumb {
+  margin: 0 0 1rem;
+  color: rgba(229, 237, 233, 0.78);
+  font-size: 0.92rem;
+}
+
+.main {
+  padding: 4.5rem 1rem 5rem;
+}
+
+.section {
+  width: min(100%, var(--max-width));
+  margin: 0 auto;
+}
+
+.section + .section {
+  margin-top: 5.2rem;
+}
+
+.section-header {
+  margin-bottom: 1.8rem;
+}
+
+.section-header h2 {
+  margin: 0.9rem 0 0;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.12;
+}
+
+.profile-grid,
+.future-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.profile-grid .card,
+.future-grid .card {
+  padding: 1.55rem;
+}
+
+.profile-grid h3,
+.future-grid h3,
+.journal-entry h3,
+.photo-card h3 {
+  margin: 0;
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.profile-grid h3,
+.future-grid h3 {
+  font-size: 1.55rem;
+}
+
+.profile-grid p,
+.future-grid p {
+  margin: 0.85rem 0 0;
+  line-height: 1.9;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tag-list li {
+  padding: 0.5rem 0.82rem;
+  border-radius: 999px;
+  background: rgba(43, 125, 107, 0.08);
+  color: var(--ink);
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1rem;
+}
+
+.journal-entry {
+  border: 1px solid var(--line);
+  border-radius: 1.9rem;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.journal-entry__link {
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  min-height: 100%;
+}
+
+.journal-entry__media {
+  position: relative;
+  min-height: 19rem;
+  overflow: hidden;
+  background: #d8e1db;
+}
+
+.journal-entry__media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, transparent, rgba(11, 19, 19, 0.22));
+}
+
+.journal-entry__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  transform: scale(1.02);
+  transition: transform 280ms ease;
+}
+
+.journal-entry:hover .journal-entry__media img {
+  transform: scale(1.05);
+}
+
+.journal-entry__stamp {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(141, 64, 54, 0.9);
+  color: #f7f1e8;
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+}
+
+.journal-entry__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.65rem;
+}
+
+.journal-entry__meta {
+  margin: 0 0 0.8rem;
+  color: var(--jade);
+  font-size: 0.84rem;
+  letter-spacing: 0.12rem;
+}
+
+.journal-entry h3 {
+  font-size: 2rem;
+}
+
+.journal-entry p:last-of-type,
+.journal-entry__body > p:not(.journal-entry__meta) {
+  margin: 0.9rem 0 0;
+  line-height: 1.9;
+}
+
+.journal-entry__cta {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 1.15rem;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  background: rgba(43, 125, 107, 0.12);
+  color: var(--jade);
+}
+
+.journal-entry__cta--muted {
+  background: rgba(24, 35, 43, 0.06);
+  color: var(--ink-soft);
+}
+
+.journal-entry--soft,
+.journal-entry--quote {
+  min-height: 15rem;
+}
+
+.journal-entry--quote {
+  grid-column: 2;
+  background:
+    linear-gradient(180deg, rgba(252, 249, 243, 0.92), rgba(251, 247, 241, 0.9)),
+    var(--paper);
+}
+
+.section--future .future-grid .card {
+  min-height: 13rem;
+}
+
+.entry-summary {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 1.4rem;
+  align-items: start;
+  padding: 1.6rem 1.8rem;
+  border: 1px solid var(--line);
+  border-radius: 1.9rem;
+  background: var(--paper-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.entry-summary h2 {
+  margin: 0.95rem 0 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.14;
+}
+
+.entry-summary__right p {
+  margin: 0;
+  line-height: 1.95;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.photo-card {
+  grid-column: span 4;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1.7rem;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.photo-card--wide {
+  grid-column: span 6;
+}
+
+.photo-card--tall .photo-card__frame {
+  min-height: 25rem;
+}
+
+.photo-card__button {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.photo-card figure {
+  margin: 0;
+}
+
+.photo-card__frame {
+  position: relative;
+  min-height: 21rem;
+  overflow: hidden;
+  background: #d8e1db;
+}
+
+.photo-card__frame::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 40%;
+  background: linear-gradient(180deg, transparent, rgba(12, 18, 19, 0.22));
+}
+
+.photo-card__frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--image-position, center center);
+  transform: scale(1.02);
+  transition: transform 300ms ease, filter 300ms ease;
+  filter: saturate(0.9) contrast(1.04) brightness(0.98);
+}
+
+.photo-card:hover .photo-card__frame img {
+  transform: scale(1.06);
+  filter: saturate(0.98) contrast(1.06) brightness(1);
+}
+
+.photo-card__seal {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  writing-mode: vertical-rl;
+  padding: 0.72rem 0.44rem;
+  border-radius: 0.82rem;
+  background: rgba(141, 64, 54, 0.92);
+  color: #f7efe6;
+  font-family: "STKaiti", "KaiTi", serif;
+  letter-spacing: 0.14rem;
+  box-shadow: 0 12px 26px rgba(44, 17, 12, 0.22);
+}
+
+.photo-card figcaption {
+  padding: 1.15rem 1.2rem 1.3rem;
+}
+
+.photo-card h3 {
+  font-size: 1.62rem;
+}
+
+.photo-card__poem {
+  margin: 0.82rem 0 0.35rem;
+  line-height: 1.85;
+  font-size: 1.06rem;
+}
+
+.photo-card__author {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.tail-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.7rem 1.8rem;
+  border: 1px solid var(--line);
+  border-radius: 1.9rem;
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+
+.tail-card h2 {
+  margin: 0.9rem 0 0;
+  font-size: clamp(1.8rem, 3.6vw, 2.7rem);
+  line-height: 1.18;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(7, 13, 15, 0.78);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms ease, visibility 220ms ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__dialog {
+  width: min(92vw, 980px);
+  max-height: 90vh;
+  border-radius: 1.7rem;
+  overflow: hidden;
+  background: #101718;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.lightbox__image {
+  width: 100%;
+  max-height: calc(90vh - 5rem);
+  object-fit: contain;
+  background: #101718;
+}
+
+.lightbox__caption {
+  padding: 1rem 1.2rem 1.2rem;
+  color: #f3eee7;
+  background: rgba(17, 29, 31, 0.94);
+}
+
+.lightbox__caption strong,
+.lightbox__caption div,
+.lightbox__caption small {
+  display: block;
+}
+
+.lightbox__caption strong {
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 1.2rem;
+}
+
+.lightbox__caption div {
+  margin-top: 0.45rem;
+  line-height: 1.8;
+}
+
+.lightbox__caption small {
+  margin-top: 0.35rem;
+  color: rgba(242, 237, 229, 0.72);
+}
+
+.lightbox__close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(243, 238, 231, 0.12);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 560ms ease, transform 560ms ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1080px) {
+  .profile-grid,
+  .future-grid,
+  .journal-grid,
+  .entry-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .journal-entry__link {
+    grid-template-columns: 1fr;
+  }
+
+  .journal-entry--quote {
+    grid-column: auto;
+  }
+
+  .home-hero__aside,
+  .entry-hero__aside {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 0 auto 2rem;
+    width: min(calc(100% - 2rem), var(--max-width));
+  }
+
+  .home-hero__content,
+  .entry-hero__content {
+    padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .main {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  .topbar {
+    width: calc(100% - 1.4rem);
+    gap: 1rem;
+  }
+
+  .topbar__links {
+    gap: 0.8rem;
+    font-size: 0.88rem;
+  }
+
+  .brand__text {
+    letter-spacing: 0.08rem;
+    font-size: 0.95rem;
+  }
+
+  .photo-card,
+  .photo-card--wide,
+  .photo-card--tall {
+    grid-column: 1 / -1;
+  }
+
+  .photo-card__frame,
+  .photo-card--tall .photo-card__frame {
+    min-height: 18.2rem;
+  }
+
+  .tail-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
